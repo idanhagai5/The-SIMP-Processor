@@ -24,3 +24,11 @@ The SIMP processor comprises 16 registers, each 32 bits wide. The following tabl
 | 14              | $fp           | Frame Pointer               |
 | 15              | $ra           | Return address              |
 
+The register names and their roles closely resemble those of the MIPS processor, with one notable difference: register number 1, $imm, is a special register that cannot be written to directly. It always contains the field of the immediate value, after undergoing sign extension. This register is updated for each instruction as part of the decoding process. Register 0, $zero, retains a constant zero value. Instructions that attempt to write to $zero do not alter its value."
+
+
+
+
+
+
+
