@@ -30,6 +30,13 @@ The registers names and their roles closely resemble those of the MIPS processor
 ## main memory 
 Unlike the MIPS processor, the SIMP processor lacks support for byte or short data types. The word width is fixed at 32 bits, reflecting the width of the main memory. All operations involving main memory—whether reading or writing—are carried out with 32-bit units. Consequently, main memory addresses are expressed in terms of words, in contrast to the byte-oriented addresses used in MIPS. As a result, the program counter (PC) register advances normally (if not jumped) by 1, not by 4 as in the MIPS architecture.
 
+## Instruction Set
+The SIMP processor utilizes a uniform format for encoding all instructions. Each instruction is 32 bits wide and is encoded as follows: 
+
+| 31:24  | 23:20      | 19:16  |15:12  |11:0  |
+|opcode|rd|       rs       | rt| immediate|
+
+
 
 
 
