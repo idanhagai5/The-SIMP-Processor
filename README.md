@@ -37,6 +37,28 @@ The SIMP processor utilizes a uniform format for encoding all instructions. Each
 |------|-----|-----|-----|----|
 |opcode|rd   |rs   | rt |immediate|
 
+The opcodes supported by the processor and the meaning of each instruction are given in the following table:
+
+| Opcode Number | Name | Meaning |
+|--------|------|---------|
+| 0      | add  | R[rd]=R[rs]+R[rt] |
+| 1      | sub  | R[rd]=R[rs]-R[rt] |
+| 2      | and  | R[rd]=R[rs]&R[rt] |
+| 3      | or   | R[rd]=R[rs]|R[rt] |
+| 4      | sll  | R[rd]=R[rs]<<R[rt] |
+| 5      | sra  | R[rd]=R[rs]+R[rt] |
+| 6      | srl  | R[rd]=R[rs]>>>R[rt] |
+| 7      | beq  | if (R[rs] == R[rt]) pc = R[rd] |
+| 8      | bne  | if (R[rs] != R[rt]) pc = R[rd] |
+| 9      | blt  | if (R[rs] < R[rt]) pc = R[rd] |
+| 10     | bgt  | if (R[rs] > R[rt]) pc = R[rd] |
+| 11     | ble  | if (R[rs] <= R[rt]) pc = R[rd] |
+| 12     | bge  | if (R[rs] >= R[rt]) pc = R[rd] |
+| 13     | jal  | R[15] = pc + 1 (next instruction address), pc = R[rd] |
+| 14     | lw   | R[rd] = MEM[R[rs]+R[rt]] |
+| 15     | sw   | MEM[R[rs]+R[rt]] = R[rd] |
+| 16     | halt | Halt execution, exit simulator |
+
 
 
 
