@@ -59,6 +59,21 @@ The opcodes supported by the processor and the meaning of each instruction are g
 | 15     | sw   | MEM[R[rs]+R[rt]] = R[rd] |
 | 16     | halt | Halt execution, exit simulator |
 
+## The Simulator
+
+The simulator operates on a fetch-decode-execute loop. Initially, PC is set to 0. In each iteration, the simulator fetches the instruction from the address held in PC, decodes the instruction, updates register number 1 with the sign-extended value of the immediate field, and then executes the instruction. After executing the instruction, PC is updated to PC + 1, unless a jump instruction has altered the PC to a different value. The simulation end after the execution of the HALT instruction.
+The simulator was implemented in C and compiled into a command-line application. It accepts five command-line parameters as specified in the following execution line:
+
+**sim.exe memin.txt memout.txt regout.txt trace.txt cycles.txt**
+
+The "memin.txt" file  is an input text file containing the initial contents of the main memory at the start of the simulation. Each line in the file represents a single memory cell (32 bits) starting at address zero, formatted as an 8- hexadecimal digits . If the number of lines in the file is less than 512 (the length of the main memory), it is assumed that the remaining memory cells are reset.
+The "memout.txt" file  is an output file, in the same format as memin.txt, which contains the contents of the main memory at the end of the run.
+The "regout.txt" file is an output file that holds the contents of registers R2-R15 at the end of the simulation. Each line is formatted with 8 hexadecimal digits.
+The "trace.txt" file is an output file containing a line of text for each instruction executed by the processor in the following format:
+PC INST R0 R1 R2 R3 R4 R5 R6 R7 R8 R9 R10 R11 R12 R13 R14 R15.
+Each field consists of 8 hexadecimal digits. The PC represents the Program Counter, INST is the encoded instruction read from memory, followed by the contents of the registers before executing the instruction.
+The "cycles.txt" file is an output file that records the number of clock cycles executed by the processor.
+
 
 
 
