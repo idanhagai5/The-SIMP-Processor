@@ -95,6 +95,22 @@ In each instruction, the immediate field can take one of the following forms:
 - A decimal number, either positive or negative.
 - A hexadecimal number, starting with '0x' and followed by hexadecimal digits.
 - A label.
+- 
+Examples:
+ 
+ bne $imm, $t0, $t1, L1                   # if ($t0 != $t1) goto L1 (reg1 = address of L1)
+ add $t2, $t2, $imm, 1                    # $t2 = $t2 + 1 (reg1 = 1)
+ beq $imm, $zero, $zero, L2          # unconditional jump to L2 (reg1 = address L2)
+ L1:
+ sub $t2, $t2, $imm, 1                    # $t2 = $t2 – 1 (reg1 = 1)
+ L2:
+ add $t1, $zero, $imm, L3              # $t1 = address of L3 (reg1 = address L3)
+ beq $t1, $zero, $zero, 0                # jump to the address specified in t1 (reg1 = 0)
+ L3:
+ jal $imm, $zero, $zero, L4             # function call L4, save return addr in $ra
+ halt $zero, $zero, $zero, 0            # halt execution
+ L4:
+ beq $ra, $zero, $zero, 0                # return from function in address in $ra (reg1=0)
 
 
 
