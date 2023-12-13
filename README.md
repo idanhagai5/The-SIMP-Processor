@@ -81,7 +81,7 @@ The file `memin.txt` serves as an input file in text format, encapsulating the i
 * **cycles.txt File:**
   The `cycles.txt` file is an output file that records the number of clock cycles executed by the processor.
 
-  ## The Assembler
+## The Assembler
 
 The assembler, developed in the C programming language, is responsible for translating programs written in assembly language into machine language. Similar to the simulator, the assembler operates as a command-line application with the following execution syntax:
 
