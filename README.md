@@ -118,6 +118,18 @@ L4:
 beq $ra, $zero, $zero, 0       # return from function in the address in $ra (reg1 = 0)
 ```
 
+The assembler performs a two-pass scan to support labels in the assembly code. During the first pass, it records the addresses of all the labels encountered. In the second pass, it replaces the labels in the immediate field with the corresponding addresses calculated during the first scan. In addition to processing assembly instructions, the assembler also supports a specific instruction that enables the direct placement of a 32-bit word into memory. This instruction facilitates the incorporation of data into the memory image file:
+
+**.word address data**
+
+In this syntax, `address` signifies the word address in memory, and `data` represents the content of the word. Both fields accept either decimal numbers or hexadecimal numbers starting with 0x
+
+### Examples:
+```assembly
+.word 256 1 # set MEM[256] = 1
+.word 0x100 0x1234ABCD # MEM[0x100] = MEM[256] = 0x1234ABCD
+```
+
 
 
 
