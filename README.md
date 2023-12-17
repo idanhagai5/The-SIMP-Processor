@@ -33,9 +33,9 @@ Unlike the MIPS processor, the SIMP processor lacks support for byte or short da
 ## Instruction Set
 The SIMP processor utilizes a uniform format for encoding all instructions. Each instruction is 32 bits wide and is encoded as follows: 
 
-| 31:24|23:20|19:16|15:12|11:0|
-|------|-----|-----|-----|----|
-|opcode|rd   |rs   | rt |immediate|
+|bit number| 31:24|23:20|19:16|15:12|11:0|
+|----------|------|-----|-----|-----|----|
+|----------|opcode|rd   |rs   | rt |immediate|
 
 The opcodes supported by the processor and the meaning of each instruction are given in the following table:
 
