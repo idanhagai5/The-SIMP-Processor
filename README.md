@@ -138,8 +138,13 @@ Three assembly programs were created to validate the correctness of the assemble
    - Implements the bubble sort algorithm to sort an array of numbers in ascending order.
    - The array to be sorted is located in memory cells 0x100 to 0x10F.
 
-2. **Fibonacci Program (fib.asm):**
-   - Calculates the nth term in the Fibonacci series.
+2. **Matrix Addition Program (summat.asm):**
+   - Performs the addition of two 4x4-valued matrices.
+   - The first matrix is located at memory addresses 0x100 to 0x10F.
+   - The second matrix is located at memory addresses 0x110 to 0x11F.
+   - The result matrix will be written to memory addresses 0x120 to 0x12F.
+   - For example, for the first matrix, A11 will be at address 0x100, A12 at address 0x101, and so on.
+
 
 3. **Binomial Coefficient Program (binom.asm):**
    - Calculates Newton's binomial coefficient recursively using the following algorithm:
