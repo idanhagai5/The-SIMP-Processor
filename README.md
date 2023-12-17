@@ -130,6 +130,32 @@ In this syntax, `address` signifies the word address in memory, and `data` repre
 .word 0x100 0x1234ABCD # MEM[0x100] = MEM[256] = 0x1234ABCD
 ```
 
+## Test Programs 
+
+Three assembly programs were created to validate the correctness of the assembler and simulator:
+
+1. **Bubble Sort Program (bubble.asm):**
+   - Implements the bubble sort algorithm to sort an array of numbers in ascending order.
+   - The array to be sorted is located in memory cells 0x100 to 0x10F.
+
+2. **Fibonacci Program (fib.asm):**
+   - Calculates the nth term in the Fibonacci series.
+
+3. **Binomial Coefficient Program (binom.asm):**
+   - Calculates Newton's binomial coefficient recursively using the following algorithm:
+     ```c
+     int binom(n, k) {
+         if (k == 0 || n == k)
+             return 1;
+         return binom(n-1, k-1) + binom(n-1, k);
+     }
+     ```
+   - At the start of the run, the values of `n` and `k` are provided at memory addresses 0x100 and 0x101, respectively.
+   - The result will be written to memory address 0x102.
+   - It is assumed that `n` is small enough to avoid overflow.
+
+
+
 
 
 
