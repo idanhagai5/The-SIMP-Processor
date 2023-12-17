@@ -35,7 +35,7 @@ The SIMP processor utilizes a uniform format for encoding all instructions. Each
 
 |bit number| 31:24|23:20|19:16|15:12|11:0|
 |----------|------|-----|-----|-----|----|
-|----------|opcode|rd   |rs   | rt |immediate|
+|          |opcode|rd   |rs   | rt |immediate|
 
 The opcodes supported by the processor and the meaning of each instruction are given in the following table:
 
