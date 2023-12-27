@@ -159,6 +159,13 @@ Three assembly programs were created to validate the correctness of the assemble
    - The result will be written to memory address 0x102.
    - It is assumed that `n` is small enough to avoid overflow.
 
+  
+     4. **Fibonacci Program (fib.asm):**
+   - Calculates the n'th term of a Fibonacci series.
+   - The input 'n' is stored in memory at address 0x20..
+   - The result will be written to memory address 0x21.
+   - It is assumed that `n` is small enough to avoid overflow.
+
 
 
 
