@@ -1,0 +1,12 @@
+﻿  asm.c
+C:\GitHub\asm\asm\asm.c(91,17): warning C4013: 'read_file' undefined; assuming extern returning int
+C:\GitHub\asm\asm\asm.c(295,14): warning C4244: '=': conversion from '__int64' to 'int', possible loss of data
+C:\GitHub\asm\asm\asm.c(301,11): warning C4244: '=': conversion from '__int64' to 'int', possible loss of data
+C:\GitHub\asm\asm\asm.c(392,7): warning C4101: 'hex': unreferenced local variable
+C:\GitHub\asm\asm\asm.c(500,12): warning C4244: '=': conversion from '__int64' to 'int', possible loss of data
+C:\GitHub\asm\asm\asm.c(502,14): warning C4047: 'function': 'char *const ' differs in levels of indirection from 'char (*)[8]'
+C:\GitHub\asm\asm\asm.c(502,10): warning C4024: 'sprintf': different types for formal and actual parameter 1
+C:\GitHub\asm\asm\asm.c(521,15): warning C4244: '=': conversion from '__int64' to 'int', possible loss of data
+C:\GitHub\asm\asm\asm.c(522,17): warning C4047: 'function': 'char *const ' differs in levels of indirection from 'char (*)[9]'
+C:\GitHub\asm\asm\asm.c(522,13): warning C4024: 'sprintf': different types for formal and actual parameter 1
+  asm.vcxproj -> C:\GitHub\asm\x64\Debug\asm.exe

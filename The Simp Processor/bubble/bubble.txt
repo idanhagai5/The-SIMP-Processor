@@ -1,0 +1,50 @@
+#array to be sorted
+
+.word 0x100 46
+.word 0x101 52
+.word 0x102 7
+.word 0x103 33
+.word 0x104 8
+.word 0x105 2
+.word 0x106 143
+.word 0x107 3215
+.word 0x108 222
+.word 0x109 31
+.word 0x10A 89
+.word 0x10B 16
+.word 0x10C 112
+.word 0x10D 344
+.word 0x10E 5
+.word 0x10F 434
+	
+	add $sp, $sp, $imm, -4		#increase the stack for 4 spots
+	sw $s0, $sp, $imm, 0		#save saved registers
+	sw $s1, $sp, $imm, 1			
+	sw $s2, $sp, $imm, 2	
+	sw $ra, $sp, $imm, 3		# save return address 
+	sub $s0,$zero,$zero,0		# $s0 is loop1 index
+	sub $s1,$imm,$zero,0x100	# load address of array to $s1 
+	
+loop1:	sub $s2,$zero,$zero,0		# $s2 contains index of loop2
+loop2:
+	lw $t0,$s1,$s2,0			# load array element from place $s2 to $t0
+	add $t1,$s2,$imm,1			# $t1 stores the index of $s2+1
+	lw $t2,$s1,$t1,0			# load element from $t1 to $t2
+	bge $imm,$t2,$t0,end		# if the value of t2 is greater or equal to the value of t0. branch to "end".
+	sw  $t2,$s1,$s2,0			# swap array elements 
+	sw $t0,$s1,$t1,0
+end:							# end of if statement 
+	add $s2,$s2,$imm,1			# loop2 index increased by 1
+	sub $t0,$imm,$zero,15		# stores array's length 
+	sub $t1,$t0,$s0,0			# length of loop2 
+	bgt $imm,$t1,$s2,loop2	    # go to the beginning of loop2 if there are not enough iterations
+	add $s0,$s0,$imm,1			# loop1 index increased by 1
+	sub $t0,$imm,$zero,15		# load 15 to $t0
+	bgt $imm,$t0,$s0,loop1	    # go to the beginning of loop1 if there are not enough iterations
+	lw $s0, $sp, $zero, 0		# restore saved values
+	lw $s1, $sp, $imm, 1		
+	lw $s2, $sp, $imm, 2
+	lw $ra, $sp, $imm, 3
+	add $sp, $sp, $imm, 4		
+	halt $zero,$zero,$zero,0	# End of the program
+	

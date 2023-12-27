@@ -1,0 +1,43 @@
+add $sp, $zero, $imm, 1		# set $sp= 1
+sll $sp, $sp, $imm, 7		# set $sp= 128
+lw $a0, $zero, $imm, 0x100	# get n from address 0x100
+lw $a1, $zero, $imm, 0x101	# get k from address 0x101
+jal $imm, $zero, $zero, binom # calc $v0 = binom(n,k)
+sw $v0, $zero, $imm, 0x102		# store binom(n,k) in 0x102
+halt $zero, $zero, $zero, 0	    # halt
+
+binom:
+add $sp, $sp, $imm, -4		        #open 4 slots in stack
+sw $ra, $sp, $imm, 0		        #save $ra to stack -4
+sw $s0, $sp, $imm, 1			    #save $s0 to stack -3
+sw $a0, $sp, $imm, 2			    #save $a0 to stack -2
+sw $a1, $sp, $imm, 3			    #save $a1 to stack -1
+
+
+beq $imm, $a1, $zero, LOOP1		#if k == 0 go to LOOP1	
+beq $imm, $a0, $a1, LOOP1		#if n == k go to LOOP1
+
+
+LOOP2: sub $a0, $a0, $imm, 1			# calculate n - 1
+jal $imm, $zero, $zero, binom		#going to binom loop again
+add $s0, $v0, $imm, 0			#$s0 = result value
+
+sub $a1, $a1, $imm, 1		# calculate k - 1
+jal $imm, $zero, $zero, binom	#going to binom loop again
+
+add $v0, $s0, $v0, 0				#result new value
+beq  $imm, $zero, $zero, FINISH	#go to return 
+
+LOOP1:
+add $v0, $zero, $imm, 1		    #return result value = 1
+
+FINISH:
+lw   $ra, $sp, $imm, 0			#restoring data
+lw   $s0, $sp, $imm, 1	
+lw   $a0, $sp, $imm, 2		
+lw   $a1, $sp, $imm, 3		
+add  $sp, $sp, $imm, 4			#closing stack						
+beq $ra, $zero, $zero, 0			#returning
+
+.word 0x100 7			#index n
+.word 0x101 3			#index k

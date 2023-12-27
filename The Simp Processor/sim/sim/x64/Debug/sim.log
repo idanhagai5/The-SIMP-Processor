@@ -1,0 +1,4 @@
+﻿  sim.c
+C:\GitHub\sim\sim\sim.c(6,1): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
+C:\GitHub\sim\sim\sim.c(6,1): message : '_CRT_SECURE_NO_WARNINGS' previously declared on the command line
+  sim.vcxproj -> C:\GitHub\sim\x64\Debug\sim.exe

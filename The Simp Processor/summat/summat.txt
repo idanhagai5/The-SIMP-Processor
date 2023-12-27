@@ -1,0 +1,61 @@
+# input matrices
+
+.word 0x100 4
+.word 0x101 3
+.word 0x102 2
+.word 0x103 1
+.word 0x104 3
+.word 0x105 1
+.word 0x106 4
+.word 0x107 4
+.word 0x108 3
+.word 0x109 2
+.word 0x10A 3
+.word 0x10B 3
+.word 0x10C 5
+.word 0x10D 3
+.word 0x10E 4
+.word 0x10F 4
+
+.word 0x110 8
+.word 0x111 1
+.word 0x112 2
+.word 0x113 3
+.word 0x114 2
+.word 0x115 2
+.word 0x116 1
+.word 0x117 2
+.word 0x118 1
+.word 0x119 2
+.word 0x11A 3
+.word 0x11B 4
+.word 0x11C 4
+.word 0x11D 5
+.word 0x11E 2
+.word 0x11F 1
+    
+    add $sp, $sp, $imm, -4		#increase the stack for s spots
+	sw $s0, $sp, $imm, 0		#save values
+	sw $s1, $sp, $imm, 1			
+	sw $s2, $sp, $imm, 2
+    sw $ra, $sp, $imm,3			
+	
+	sub $s0,$imm,$zero,0x100	# load address of where matrix 1 begins to s0
+	sub $s1,$imm,$zero,0x110	# load address of where matrix 2 begins to s1
+	sub $s2,$imm,$zero,0x120	# load address of where the output matrix begins to s2
+	sub $t0,$zero,$zero,0		# store the loop index to 't0'. his value will be 0
+	sub $t3,$imm,$zero,16		# store the value 16 to t3  in order to stop the loop
+Loop:
+	lw $t1,$s0,$t0,0			# load matrix1[0] into $t1
+	lw $t2,$s1,$t0,0			# load matrix2[0] into $t2
+	add $t2,$t1,$t2,0			# sum up matrix1[0] and matrix2[0] and store in $t2 
+	sw $t2,$s2,$t0,0			# store the result in $s2 (the output matrix)
+	add $t0,$t0,$imm,1			# increase by one loop index 
+	bgt $imm,$t3,$t0,Loop       # comeback to the Loop if the $t0 index is smaller then 16
+
+	lw $s0, $sp, $imm, 0			# restore saved values
+	lw $s1, $sp, $imm, 1			
+	lw $s2, $sp, $imm, 2
+    lw $ra, $sp, $imm,3			
+	add $sp, $sp, $imm, 4			# pop 4 items from stack 
+	halt $zero, $zero, $zero, 0	# program end, in case we finished the sum up 
