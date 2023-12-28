@@ -1,5 +1,5 @@
 # The SIMP Processor
-In this project, I developed both an assembler and a simulator as separate programs for a RISC processor known as SIMP.
+In this project, I developed both an assembler and a simulator as separate programs for a RISC processor called SIMP.
 Additionally, I authored assembly language programs tailored for the SIMP architecture. The simulator executes each insrtuction within a single clock cycle. 
 
 ## registers 
