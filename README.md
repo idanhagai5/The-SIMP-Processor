@@ -28,7 +28,7 @@ The SIMP processor comprises 16 registers, each 32 bits wide. The following tabl
 The registers names and their roles closely resemble those of the MIPS processor, with one notable difference: register number 1, $imm, is a special register that cannot be written to directly. It always contains the field of the immediate value, after undergoing sign extension. This register is updated for each instruction as part of the decoding process. Register 0, $zero, retains a constant zero value. Instructions that attempt to write to $zero do not alter its value.
 
 ## main memory 
-Unlike the MIPS processor, the SIMP processor lacks support for byte or short data types. The word width is fixed at 32 bits, reflecting the width of the main memory. All operations involving main memory—whether reading or writing—are carried out with 32-bit units. Consequently, main memory addresses are expressed in terms of words, in contrast to the byte-oriented addresses used in MIPS. As a result, the program counter (PC) register advances normally (if not jumped) by 1, not by 4 as in the MIPS architecture.
+Unlike the MIPS processor, the SIMP processor lacks support for byte or short data types. The word width is fixed at 32 bits, reflecting the width of the main memory. All operations involving main memory—whether reading or writing—are carried out with 32-bit units. Consequently, main memory addresses are expressed in terms of words, in contrast to the byte-oriented addresses used in MIPS. As a result, the program counter (PC) register advances normally (if not jumped) by 1.
 
 ## Instruction Set
 The SIMP processor utilizes a uniform format for encoding all instructions. Each instruction is 32 bits wide and is encoded as follows: 
